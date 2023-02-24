@@ -100,7 +100,7 @@ function App() {
                   onToggle={toggleReminder}
                 />
               ) : (
-                "Nenhuma tarefa = JONY DOS SANTOS BARBOSA"
+                "TAREFA CONCLUIDA DEF21 = JONY DOS SANTOS BARBOSA"
               )}
             </>
           )}
