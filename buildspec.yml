@@ -11,17 +11,18 @@ phases:
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-      - echo Build iniciado em `data`
-      - echo gerando image da BIA...
+      - echo Build iniciado em `date`
+      - echo gerando imagem da BIA...
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - echo Build finalizando com sucesso em `data`
-      - echo Fazendo push de imagem para o ECR
+      - echo Build finalizando com sucesso em `date`
+      - echo Fazendo push da imagem para o ECR
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Gerando artefato da imagem para o ECS
       - printf '[{"name":"bia","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
-  files: imagedefinitions.json     
+  files: imagedefinitions.json 
+      
